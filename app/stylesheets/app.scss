@@ -49,13 +49,13 @@ body.landing {
     font-size: 14px;
   }
 
-body.landing .navbar{
+.navbar{
   margin-bottom: 0;
 }
 /* medium-purple: #7b46a3 -123, 70, 163 */
 
 .player-header-nav {
-  background-color: rgba(123, 70, 163, 9);
+  background-color: rgba(123, 70, 163, .9);
 }
 
 .album-header-container {
@@ -124,6 +124,7 @@ body.landing .navbar{
 
   .collection-album-container img {
     max-width: 100%; 
+<<<<<<< HEAD
   }
 
   .collection-album-container .collection-album-image-container {
@@ -360,3 +361,9 @@ body.landing .navbar{
    width: 100px;
    vertical-align: middle;
  }
+=======
+  }  
+.player-header-nav {
+  background-color: rgba(123, 70, 163, .9);
+}
+>>>>>>> collection-view
