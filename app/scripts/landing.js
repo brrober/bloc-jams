@@ -14,5 +14,5 @@ $(document).ready(function(){
      $(this).animate({'margin-top': '0px'});
    };
  
-   $('.selling-points .point').hover(onHoverAction, offHoverAction);
+  $('.selling-points .point').hover(onHoverAction, offHoverAction);
 });
