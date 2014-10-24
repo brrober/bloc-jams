@@ -242,7 +242,6 @@ require('./album');
 var buildAlbumThumbnail = function() {
     var template =
         '<div class="collection-album-container col-md-2">'
-      + '  <img src="/images/album-placeholder.png"/>'
       + '  <div class="collection-album-image-container">'
       + '    <img src="/images/album-placeholder.png"/>'
       + '  </div>'
@@ -302,7 +301,12 @@ var updateCollectionView = function() {
 
 if (document.URL.match(/\/collection.html/)) {
    $(document).ready(function() {
+<<<<<<< HEAD
      updateCollectionView();
+=======
+  
+   updateCollectionView();
+>>>>>>> overlays-with-jquery
    });
 }
 
