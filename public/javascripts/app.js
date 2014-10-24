@@ -91,7 +91,6 @@
   globals.require.brunch = true;
 })();
 require.register("scripts/album", function(exports, require, module) {
-  console.log("album.js");
 
  // Example Album
  var albumPicasso = {
@@ -233,6 +232,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 ;require.register("scripts/app", function(exports, require, module) {
 require("./landing");
 require("./collection");
+require('./album');
 
 
 

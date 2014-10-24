@@ -1,4 +1,3 @@
-  console.log("album.js");
 
  // Example Album
  var albumPicasso = {
