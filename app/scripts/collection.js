@@ -1,7 +1,6 @@
 var buildAlbumThumbnail = function() {
     var template =
         '<div class="collection-album-container col-md-2">'
-      + '  <img src="/images/album-placeholder.png"/>'
       + '  <div class="collection-album-image-container">'
       + '    <img src="/images/album-placeholder.png"/>'
       + '  </div>'
@@ -62,8 +61,7 @@ var updateCollectionView = function() {
 if (document.URL.match(/\/collection.html/)) {
    // Wait until the HTML is fully processed.
    $(document).ready(function() {
-     console.log("Collection.js has run");
-   
+  
    updateCollectionView();
    });
 }
