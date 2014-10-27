@@ -301,12 +301,9 @@ var updateCollectionView = function() {
 
 if (document.URL.match(/\/collection.html/)) {
    $(document).ready(function() {
-<<<<<<< HEAD
+
      updateCollectionView();
-=======
-  
-   updateCollectionView();
->>>>>>> overlays-with-jquery
+
    });
 }
 
