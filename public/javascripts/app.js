@@ -277,11 +277,18 @@ var createSongRow = function(songNumber, songName, songLength) {
 //require("./profile");
 
  angular.module('BlocJams', []).controller('Landing.controller', ['$scope', function($scope) {
-  $scope.subText = "Turn the music up!";
+  $scope.subtext1 = "Bloc  Jams";
+   $scope.subText = "Turn the music up!";
  
   $scope.subTextClicked = function() {
      $scope.subText += '!';
   };
+   
+   $scope.subtext1Clicked = function shuffle(o){ //v1.0
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+   };
+   
    
       $scope.albumURLs = [
      '/images/album-placeholders/album-1.jpg',
@@ -294,6 +301,8 @@ var createSongRow = function(songNumber, songName, songLength) {
      '/images/album-placeholders/album-8.jpg',
      '/images/album-placeholders/album-9.jpg',
    ];
+        
+
 }]);
 });
 
