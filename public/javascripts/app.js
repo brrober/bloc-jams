@@ -276,19 +276,28 @@ var createSongRow = function(songNumber, songName, songLength) {
 //require('./album');
 //require("./profile");
 
- angular.module('BlocJams', []).controller('Landing.controller', ['$scope', function($scope) {
-  $scope.subtext1 = "Bloc  Jams";
-   $scope.subText = "Turn the music up!";
+var blocJams = angular.module('BlocJams', ['ui.router']);
+
+ blocJams.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
+   $locationProvider.html5Mode(true);
+ 
+   $stateProvider.state('landing', {
+     url: '/',
+     controller: 'Landing.controller',
+     templateUrl: '/templates/landing.html'
+   });
+ }]);
+ 
+ // This is a cleaner way to call the controller than crowding it on the module definition.
+ blocJams.controller('Landing.controller', ['$scope', function($scope) {
+    $scope.subText = "Turn the music up!";
  
   $scope.subTextClicked = function() {
      $scope.subText += '!';
   };
    
-   $scope.subtext1Clicked = function shuffle(o){ //v1.0
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
-    return o;
-   };
-   
+
+
    
       $scope.albumURLs = [
      '/images/album-placeholders/album-1.jpg',
@@ -301,9 +310,9 @@ var createSongRow = function(songNumber, songName, songLength) {
      '/images/album-placeholders/album-8.jpg',
      '/images/album-placeholders/album-9.jpg',
    ];
-        
+        }]);       
 
-}]);
+
 });
 
 ;require.register("scripts/collection", function(exports, require, module) {
