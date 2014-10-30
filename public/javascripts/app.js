@@ -310,6 +310,7 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
   $scope.subTextClicked = function() {
      $scope.subText += '!';
   };
+ }]);
    
  blocJams.controller('Collection.controller', ['$scope', function($scope) {
    $scope.albums = [];
