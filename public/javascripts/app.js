@@ -294,6 +294,13 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
      controller: 'Collection.controller',
      templateUrl: '/templates/collection.html'
    });
+   
+     $stateProvider.state('album', {
+     url: '/album',
+     templateUrl: '/templates/album.html',
+     controller: 'Album.controller'
+   });
+
  }]);
  
  // This is a cleaner way to call the controller than crowding it on the module definition.
@@ -309,6 +316,7 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
    for (var i = 0; i < 33; i++) {
      $scope.albums.push(angular.copy(albumPicasso));
    }
+   
  }]);
 
    
@@ -323,7 +331,11 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
      '/images/album-placeholders/album-8.jpg',
      '/images/album-placeholders/album-9.jpg',
    ];
-        }]);       
+
+ blocJams.controller('Album.controller', ['$scope', function($scope) {
+   $scope.album = angular.copy(albumPicasso);
+ }]);
+      
 
 
 });

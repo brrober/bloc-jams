@@ -1,0 +1,18 @@
+ <div class='album-container container'>
+   <div class='album-header-container row'> <!-- Album Header -->
+     <div class='col-md-3'> <!-- Album Image -->
+       <img ng-src="{{ album.albumArtUrl}}" />
+     </div>
+ 
+     <div class='album-header-information col-md-8 col-md-push-1'> <!-- Album Information -->
+       <h3 class='album-title'> {{ album.name }}</h3>
+       <h4 class='album-artist'> {{ album.artist }} </h4>
+       <h5 class='album-meta-info'> {{ album.year }} on {{ album.label }} </h5>
+     </div>
+   </div>
+ 
+   <div class='row'> <!-- Song table -->
+     <table class='album-song-listing table'>
+     </table>
+   </div>
+ </div>
