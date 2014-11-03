@@ -256,11 +256,11 @@ var createSongRow = function(songNumber, songName, songLength) {
    year: '1881',
    albumArtUrl: '/images/album-placeholder.png',
    songs: [
-       { name: 'Blue', length: '4:26', audioUrl: '/music/placeholders/blue' },
-       { name: 'Green', length: '3:14', audioUrl: '/music/placeholders/green' },
-       { name: 'Red', length: '5:01', audioUrl: '/music/placeholders/red' },
-       { name: 'Pink', length: '3:21', audioUrl: '/music/placeholders/pink' },
-       { name: 'Magenta', length: '2:15', audioUrl: '/music/placeholders/magenta' }
+      { name: 'Blue', length: 163.38, audioUrl: '/music/placeholders/blue' },
+      { name: 'Green', length: 105.66 , audioUrl: '/music/placeholders/green' },
+      { name: 'Red', length: 270.14, audioUrl: '/music/placeholders/red' },
+      { name: 'Pink', length: 154.81, audioUrl: '/music/placeholders/pink' },
+      { name: 'Magenta', length: 375.92, audioUrl: '/music/placeholders/magenta' }
      ]
  };
 
@@ -398,6 +398,14 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
        this.setSong(this.currentAlbum, song);
      
      },
+    seek: function(time) {
+       // Checks to make sure that a sound file is playing before seeking.
+       if(currentSoundFile) {
+         // Uses a Buzz method to set the time of the song.
+         currentSoundFile.setTime(time);
+       }
+     },
+     
      setSong: function(album, song) {
     if (currentSoundFile) {
       currentSoundFile.stop();
@@ -427,22 +435,51 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
      offsetXPercent = Math.min(1, offsetXPercent);
      return offsetXPercent;
    }
-   
+    var numberFromValue = function(value, defaultValue) {
+     if (typeof value === 'number') {
+       return value;
+     }
+ 
+     if(typeof value === 'undefined') {
+       return defaultValue;
+     }
+ 
+     if(typeof value === 'string') {
+       return Number(value);
+     }
+   }
+ 
    
    return {
      templateUrl: '/templates/directives/slider.html', 
      replace: true,
      restrict: 'E',
-     scope: {}, // Creates a scope that exists only in this directive.
+ // Creates a scope that exists only in this directive.
+     scope: {
+      onChange: '&'
+    },
+     
      link: function(scope, element, attributes) {
      // These values represent the progress into the song/volume bar, and its max value.
      // For now, we're supplying arbitrary initial and max values.
      scope.value = 0;
-     scope.max = 200;  
+     scope.max = 100;  
        
-      scope.onClickSlider = function(event) {
+      var $seekBar = $(element);
+  
+      attributes.$observe('value', function(newValue) {
+        scope.value = numberFromValue(newValue, 0);
+      });
+ 
+      attributes.$observe('max', function(newValue) {
+        scope.max = numberFromValue(newValue, 100) || 100;
+      });
+ 
+ 
+        scope.onClickSlider = function(event) {
          var percent = calculateSliderPercentFromMouseEvent($seekBar, event);
          scope.value = percent * scope.max;
+         notifyCallback(scope.value);
        }
       
       scope.trackThumb = function() {
@@ -450,6 +487,7 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
            var percent = calculateSliderPercentFromMouseEvent($seekBar, event);
            scope.$apply(function(){
              scope.value = percent * scope.max;
+             notifyCallback(scope.value);
            });
          });
  
@@ -460,12 +498,10 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
          });
        };
        
-       
-       var $seekBar = $(element);
-  
- 
        var percentString = function () {
-         percent = Number(scope.value) / Number(scope.max)  * 100;
+          var value = scope.value || 0;
+          var max = scope.max || 100;
+          percent = value / max * 100;
          return percent + "%";
        }
  
@@ -476,11 +512,15 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
        scope.thumbStyle = function() {
          return {left: percentString()};
        }
+       var notifyCallback = function(newValue) {
+         if(typeof scope.onChange === 'function') {
+           scope.onChange({value: newValue});
+         }
+       };
     }
         
-   }; 
- 
-    }]);  
+   };
+ }]);  
 });
 
 ;require.register("scripts/collection", function(exports, require, module) {
