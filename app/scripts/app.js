@@ -142,7 +142,7 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
      currentAlbum: null,
      playing: false,
      volume: 90,
-
+     muted: false,
      
      play: function() {
       this.playing = true;
@@ -171,6 +171,18 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
        this.setSong(this.currentAlbum, song);
      
      },
+     mute: function() {
+       if (!this.muted) {
+         currentSoundFile.mute();
+         this.muted = true;
+       }
+       else {
+         console.log("triggered");
+         currentSoundFile.unmute();
+         this.muted = false;
+       }
+     },
+     
     seek: function(time) {
        // Checks to make sure that a sound file is playing before seeking.
        if(currentSoundFile) {
