@@ -1,0 +1,69 @@
+
+@media (max-width: 768px) {
+
+  
+  /* Landing Page and Global Styles */
+ .player-header-nav.navbar {
+    .navbar-nav {
+      li {
+        text-align: center;
+      }
+    }
+    
+    .hero-content {
+      h1, h3 {
+        text-align: center;
+      }
+    }
+
+    .landing-album-list {
+      /* Example class added to style the album covers for mobile */
+      .album-cover {
+        position: relative;
+        left: calc(50% - 200px);
+      }
+    }
+  }
+
+  /* Collection View */
+
+
+
+
+    
+    .hero-content {
+      h1 {
+        text-align: center;
+        font-size: 50px;
+      }
+      h3 {
+        text-align: center;
+        font-size: 25px;
+      }
+    }
+
+    .selling-points {
+      padding: 0;
+      .point {
+        padding: 1em .75em;
+        h5 {
+          height: 2.25em;
+          font-size: 1.25em;
+        }
+        p {
+          text-align: center;
+          font-size: 1.0em;
+        }
+      }
+    }
+
+  .collection-album-container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 280px; /* Width of the album image. */
+  } 
+  .landing-album-list  {
+    text-align: center;
+  }
+}

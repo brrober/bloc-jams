@@ -4,6 +4,8 @@
   @import "player_bar";
   @import "buttons";
   @import "profile";
+  @import "mobile";
+
 
 html {
   height: 100%;
@@ -14,13 +16,14 @@ body {
   color: white;
   min-height: 100%;
   background: -webkit-radial-gradient( #2b1339, #380c77);
-  backgound: radial-gradient(  #2b1339, #380c77);
+  background: radial-gradient(  #2b1339, #380c77);
   padding-bottom: 150px;
+
 }
 
 body.landing {
-  background: #5B5579;
-  adding-bottom: 0;
+  background: #2f1d57;
+  padding-bottom: 0;
 }
 
 body.landing .navbar{
@@ -44,7 +47,125 @@ body.landing .navbar{
   }
 }
 
-
+// Smaller menu when on small screen
+// All padding and margin are in em, so they will scale as well
+@media (min-width : 769px) {
+  .menu {
+    font-size: 1.2em;
+  }
+}
+ 
+.menu {
+  padding: 0.5em;
+  background: #2b1339;
+  min-height: 2em;
+  line-height: 1em;
+ 
+  ul {
+    transition: max-height .25s linear;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+  }
+  li {
+    // visibility transition is on li because multiple transition selectors is not well supported
+    transition: visibility .25s linear;
+    display: inline-block;
+    border: 1px solid;
+    padding: .45em 1.1em;
+    margin: 0 .3em;
+  }
+}
+ 
+@media (max-width : 768px) {
+  .menu {
+    ul {
+      max-height: 0;
+      overflow: hidden;
+      margin: 0 3.5em 0 1em;
+      text-align: center;
+    }
+ 
+    li {
+      visibility: hidden;
+      display: block;
+      padding: 0.5em 0.6em;
+      border: none;
+    }
+ 
+    .navbar-handle {
+      display: block;
+    }
+  }
+  
+  #navbar-checkbox:checked + .menu {
+    ul {
+      max-height: 300px; // Set this to the maximum height your menu will ever have.
+    }
+    
+    li {
+      visibility: visible;
+    }
+    .navbar-handle {
+      &, &:after, &:before {
+        border-color: #aaa;
+      }
+    }
+  }
+}
+ 
+.navbar-checkbox {
+    display: none;
+}
+ 
+// Will scale based on font-size
+// Appears as 3 parallel horizontal bars
+.navbar-handle {
+    height: 45px; // just a reference to compute em values on the fly
+    display: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 45px;
+    padding: .5em 0;
+    height: 0;
+    width: 1em * 75px / 45px;
+    border-top: (1em * 6px / 45px) solid;
+ 
+    &:before, &:after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        content: ' ';
+        border-top: (1em * 6px / 45px) solid;
+    }
+ 
+    &:before {
+        top: 1em * 17px / 45px;
+    }
+ 
+    &:after {
+        top: 1em * 40px / 45px;
+    }
+}
+ 
+ 
+ 
+///////////
+ 
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  
+  .navbar-handle {
+    position: absolute;
+    font-size: 1.2em;
+    top: 0.7em;
+    right: 12px;
+    z-index: 10;    
+  }
+}
 
 
 

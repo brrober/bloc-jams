@@ -1,6 +1,7 @@
 .hero-content {
   background: #2f1d57;
-  padding: 100px 0; }
+  padding: 100px 0;
+  margin-top: 50px; }
   .hero-content h1 {
     font-size: 70px;
     margin-bottom: 50px;
@@ -18,7 +19,7 @@
     font-size: 14px; }
 
 .album-header-container {
-  margin-top: 55px;
+  margin-top: 80px;
   margin-bottom: 40px; }
 
 .album-header-information {
@@ -67,9 +68,12 @@
     height: 70px;
     text-align: center; }
 
+body {
+  margin-top: 85px; }
+
 .collection-album-container {
-  margin-top: 30px;
-  margin-bottom: 20px; }
+  margin-top: 65px;
+  margin-bottom: 10px; }
   .collection-album-container .caption {
     margin-top: 10px; }
     .collection-album-container .caption p {
@@ -296,6 +300,43 @@
 .no-right-gutter {
   padding-right: 0px; }
 
+@media (max-width: 768px) {
+  /* Landing Page and Global Styles */
+  /* Collection View */
+  .player-header-nav.navbar .navbar-nav li {
+    text-align: center; }
+  .player-header-nav.navbar .hero-content h1, .player-header-nav.navbar .hero-content h3 {
+    text-align: center; }
+  .player-header-nav.navbar .landing-album-list {
+    /* Example class added to style the album covers for mobile */ }
+    .player-header-nav.navbar .landing-album-list .album-cover {
+      position: relative;
+      left: calc(50% - 200px); }
+  .hero-content h1 {
+    text-align: center;
+    font-size: 50px; }
+  .hero-content h3 {
+    text-align: center;
+    font-size: 25px; }
+  .selling-points {
+    padding: 0; }
+    .selling-points .point {
+      padding: 1em 0.75em; }
+      .selling-points .point h5 {
+        height: 2.25em;
+        font-size: 1.25em; }
+      .selling-points .point p {
+        text-align: center;
+        font-size: 1em; }
+  .collection-album-container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 280px;
+    /* Width of the album image. */ }
+  .landing-album-list {
+    text-align: center; } }
+
 html {
   height: 100%; }
 
@@ -304,12 +345,12 @@ body {
   color: white;
   min-height: 100%;
   background: -webkit-radial-gradient(#2b1339, #380c77);
-  backgound: radial-gradient(#2b1339, #380c77);
+  background: radial-gradient(#2b1339, #380c77);
   padding-bottom: 150px; }
 
 body.landing {
-  background: #5b5579;
-  adding-bottom: 0; }
+  background: #2f1d57;
+  padding-bottom: 0; }
 
 body.landing .navbar {
   margin-bottom: 0; }
@@ -324,6 +365,83 @@ body.landing .navbar {
     letter-spacing: 1.2; }
     .player-header-nav .navbar-nav a:hover {
       color: rgba(123, 70, 163, 0.9); }
+
+@media (min-width: 769px) {
+  .menu {
+    font-size: 1.2em; } }
+
+.menu {
+  padding: 0.5em;
+  background: #2b1339;
+  min-height: 2em;
+  line-height: 1em; }
+  .menu ul {
+    transition: max-height 0.25s linear;
+    margin: 0;
+    padding: 0;
+    text-align: right; }
+  .menu li {
+    transition: visibility 0.25s linear;
+    display: inline-block;
+    border: 1px solid;
+    padding: 0.45em 1.1em;
+    margin: 0 0.3em; }
+
+@media (max-width: 768px) {
+  .menu ul {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0 3.5em 0 1em;
+    text-align: center; }
+  .menu li {
+    visibility: hidden;
+    display: block;
+    padding: 0.5em 0.6em;
+    border: none; }
+  .menu .navbar-handle {
+    display: block; }
+  #navbar-checkbox:checked + .menu ul {
+    max-height: 300px; }
+  #navbar-checkbox:checked + .menu li {
+    visibility: visible; }
+  #navbar-checkbox:checked + .menu .navbar-handle, #navbar-checkbox:checked + .menu .navbar-handle:after, #navbar-checkbox:checked + .menu .navbar-handle:before {
+    border-color: #aaaaaa; } }
+
+.navbar-checkbox {
+  display: none; }
+
+.navbar-handle {
+  height: 45px;
+  display: none;
+  cursor: pointer;
+  position: relative;
+  font-size: 45px;
+  padding: 0.5em 0;
+  height: 0;
+  width: 1.66667em;
+  border-top: 0.13333em solid; }
+  .navbar-handle:before, .navbar-handle:after {
+    position: absolute;
+    left: 0;
+    right: 0;
+    content: ' ';
+    border-top: 0.13333em solid; }
+  .navbar-handle:before {
+    top: 0.37778em; }
+  .navbar-handle:after {
+    top: 0.88889em; }
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0; }
+  .menu .navbar-handle {
+    position: absolute;
+    font-size: 1.2em;
+    top: 0.7em;
+    right: 12px;
+    z-index: 10; }
 
 
 /*# sourceMappingURL=app.css.map*/
