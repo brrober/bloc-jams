@@ -1,0 +1,17 @@
+
+<input type="checkbox" id="navbar-checkbox" class="navbar-checkbox">
+
+     <nav class="menu" ng-controller="Navigation.controller">
+  <a ui-sref='landing' class='logo navbar-left' ng-click="registerPageVisited('home')"> 
+            <img src="/images/blocjams.png">
+          </a>
+  <ul>
+        <li><a ui-sref='collection' ng-click="registerPageVisited('library')">Library</a></li>
+        <li><a ui-sref='album'ng-click="registerPageVisited('album')">Playlist</a></li>
+        <li><a ui-sref='analytics'ng-click="registerPageVisited('analytics')">Analytics</a></li>
+
+  </ul>
+  
+  <label for="navbar-checkbox" class="navbar-handle"></label>
+
+</nav> 
