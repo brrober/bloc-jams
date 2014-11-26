@@ -1,6 +1,9 @@
 
 @media (max-width: 768px) {
 
+  .hidden-xs {
+    display: none !important;
+  }
   
   /* Landing Page and Global Styles */
  .player-header-nav.navbar {
@@ -27,10 +30,7 @@
 
   /* Collection View */
 
-
-
-
-    
+  
     .hero-content {
       h1 {
         text-align: center;

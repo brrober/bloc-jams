@@ -1,0 +1,27 @@
+<ng-include src="'/templates/navigation.html'"></ng-include>
+
+
+<div class='analytics-content'> 
+  <h3> {{ subText }} </h3>
+  <h4> {{subText2 }} </h4>
+
+
+  <div class='charts container'>
+    <div class ='row'>
+      <div class ="ch-title col-md-6">
+        <h4> Visits </h4>
+    <visit visit-data="{{pagesVisited}}"></visit>
+      </div>
+      <div class ="ch-title col-md-6">
+        <h4> Songs Played </h4>
+    <songs songs-data="{{songsPlayed}}"></songs>
+  </div>
+  </div>
+  <div class='row'>
+    <div class ="ch-title col-md-12">
+        <h4> Song Length </h4>
+    <length length-data="{{songsPlayed}}"></length>
+    </div>
+   </div>
+  </div>
+</div>

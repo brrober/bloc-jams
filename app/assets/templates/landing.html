@@ -1,10 +1,11 @@
    <ng-include src="'/templates/navigation.html'"></ng-include>
 
 <div class='hero-content'>
-        <div class='container'>
+        <div class='container fadeInLeft animated'>
           <h1> Bloc Jams </h1>
-          <h3 ng-click="subTextClicked()"> {{ subText }} </h3>  
+          <h3 ng-click="subTextClicked()"> {{ subText }} </h3>
         </div>
+  
     </div>
     
       <div class='selling-points container'>
@@ -24,10 +25,24 @@
       </div>
     </div>
     
+
      <div class="landing-album-list container">
-       <div class="row">
+      <div class="row">
+        
+    
          <div class="col-md-4" ng-repeat="albumURL in albumURLs">
+     <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">    
            <img ng-src="{{albumURL}}">
+           
+   </div>
+		<div class="back">        
+      <h3> Pablo Picasso </h3>
+      <h5> The Colors </h5>
          </div>
        </div>
      </div>
+  		</div>
+	</div>
+</div>
