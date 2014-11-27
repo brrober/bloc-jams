@@ -256,7 +256,9 @@ blocJams.controller('Album.controller', ['$scope', 'SongPlayer', function($scope
    
  
 blocJams.service('Analytics', ['$rootScope', function($rootScope) {
-  $rootScope.pagesVisited =[];
+  $rootScope.pagesVisited = {};
+  $rootScope.pagesVisited.pageNames = [];
+  $rootScope.pagesVisited.visits = [];
   $rootScope.songsPlayed =[];
 
 
@@ -264,11 +266,18 @@ blocJams.service('Analytics', ['$rootScope', function($rootScope) {
   startObj.pageName ='home';
   startObj.pageloaded = new Date();
   $rootScope.pagesVisited.push(startObj);
-  
+  var pages = $rootScope.pagesVisited;
   
   return{
   
     registerPageVisited: function(pageName) {
+      var position = pages.pageNames.indexOf(pageName);
+      if(position == -1){
+        pages.pageNames.push(pageName);
+        pages.visits[pages.visits.length -1] = 1;
+      } else {
+        pages.visits(position) = pages.visits(position) +1;
+      }
       var obj={};
       obj.pageName=pageName;
       obj.pageLoaded = new Date();
