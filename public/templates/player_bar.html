@@ -1,6 +1,7 @@
  <div ng-controller="PlayerBar.controller" class='player-bar'>
        <div class='container'>
-         <div class='play-controls player-bar-control-group left-controls'>
+
+  <div class='play-controls player-bar-control-group left-controls'>
            <a class='previous' ng-click="songPlayer.previous()">
              <i class='fa fa-backward'></i>
            </a>
@@ -12,18 +13,21 @@
              <i class='fa fa-forward'></i>
            </a>
          </div>
- 
+         
+        
          <div class='currently-playing player-bar-control-group'>
-           <h2 class='song-name'> {{ songPlayer.currentSong.name }} </h2>
+           
+           <h2 class='song-name'>   {{ songPlayer.currentSong.name }} </h2>
            <div class='seek-control'>
            <slider value='{{playTime}}' max='{{songPlayer.currentSong.length}}' on-change='songPlayer.seek(value)'></slider>
               <div class='current-time'> {{ playTime | timecode }} </div>
              <div class='total-time'> {{ songPlayer.currentSong.length | timecode}}</div>
            </div>
            <h3 class='artist-name'>Fallout Boy</h3>
+           
          </div>
- 
-         <div class='right-controls player-bar-control-group'>
+        
+           <div class='right-controls player-bar-control-group hidden-xs'>
            <div class='volume' >
            <i class='fa' ng-class='volumeClass()' ng-click="songPlayer.mute()"></i>
              <slider value='{{songPlayer.volume}}' max='100' on-change='songPlayer.setVolume(value)'></slider>

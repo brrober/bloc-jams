@@ -1,9 +1,13 @@
+  @import "navigation";  
   @import "landing";
   @import "album";
   @import "collection";
   @import "player_bar";
   @import "buttons";
   @import "profile";
+  @import "mobile";
+  @import "animate";
+  @import "analytics";
 
 html {
   height: 100%;
@@ -14,37 +18,62 @@ body {
   color: white;
   min-height: 100%;
   background: -webkit-radial-gradient( #2b1339, #380c77);
-  backgound: radial-gradient(  #2b1339, #380c77);
+  background: radial-gradient(  #2b1339, #380c77);
   padding-bottom: 150px;
+
 }
 
 body.landing {
-  background: #5B5579;
-  adding-bottom: 0;
+  background: #2f1d57;
+  padding-bottom: 0;
 }
 
 body.landing .navbar{
   margin-bottom: 0;
 }
 
-.player-header-nav {
-  background-color: rgba(123, 70, 163, .9);
-  .navbar-nav {
-    a {
-      line-height: 45px;
-      color: white;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 1.2;
- 
-      &:hover {
-         color: rgba(123, 70, 163, .9);
-      }
-    }
-  }
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 390px;
+	height: 400px;
 }
 
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
 
+	position: relative;
+}
 
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
 
+	position: absolute;
+	top: 0;
+	left: 0;
+}
 
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+  padding: 50px;
+  text-align: center;
+}
