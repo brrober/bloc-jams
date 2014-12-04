@@ -32,7 +32,6 @@ var blocJams = angular.module('BlocJams', ['ui.router']);
      url: '/',
      controller: 'Landing.controller',
      templateUrl: '/templates/landing.html',
-//      onEnter: Analytics.registerPageVisited('home')
    });
  
    $stateProvider.state('collection', {
@@ -148,12 +147,6 @@ blocJams.controller('Album.controller', ['$scope', 'SongPlayer', 'Analytics', fu
    
  blocJams.controller('PlayerBar.controller', ['$scope', 'SongPlayer', 'Analytics', function($scope, SongPlayer, Analytics) {
    $scope.songPlayer = SongPlayer;
-
-//   $scope.$watch(function(scope) { return SongPlayer.currentSong }, 
-//          function(newValue, oldValue) {
-//             Analytics.registerSong(SongPlayer.currentSong);
-//             }
-//          );
                  
    $scope.volumeClass = function() {
      return {
@@ -301,13 +294,8 @@ blocJams.service('Analytics', ['$rootScope', function($rootScope) {
         songInfo.plays[position] = songInfo.plays[position] +1;
         songInfo.totalTime[position] = songInfo.totalTime[position] + songName.length;
       }
-   
-//      var obj={};
-//      obj.songName=songName;
-//      obj.songLength=SongPlayer.currentSong.length;
-//      obj.playedAt = new Date();
-//      $rootScope.songsPlayed.push(obj);
-      console.log($rootScope.songsPlayed);
+ 
+ //     console.log($rootScope.songsPlayed);
     }
   };
 }]);
@@ -435,19 +423,13 @@ blocJams.directive('visit', function($rootScope)  {
     restrict:  'E',
     link: function(scope, element)  {
       var ctx =  $("#visit-chart").get(0).getContext("2d")
- //         document.getElementById("visit-chart").getContext("2d");
-      
+
       new Chart(ctx).Bar(data);
   }
   };
 });
    
    blocJams.directive('songs', function($rootScope)  {
-
-
-//    $rootScope.songsPlayed.songNames.splice(0,1);
-//    $rootScope.songsPlayed.plays.splice(0,1);
-//      console.log($rootScope.songsPlayed);
      
   var data ={
     labels: $rootScope.songsPlayed.songNames,
